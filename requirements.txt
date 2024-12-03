@@ -5,4 +5,4 @@ numpy
 pymongo
 pymongo[srv]
 
--e .
+#-e .
