@@ -3,5 +3,6 @@ setuptools
 pandas
 numpy
 pymongo
+pymongo[srv]
 
 -e .
