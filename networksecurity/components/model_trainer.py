@@ -27,15 +27,11 @@ import mlflow
 from urllib.parse import urlparse
 
 import dagshub
-#dagshub.init(repo_owner='krishnaik06', repo_name='networksecurity', mlflow=True)
+dagshub.init(repo_owner='HarshavardhanKurtkoti', repo_name='Phising_Domain_Detection', mlflow=True)
 
-os.environ["MLFLOW_TRACKING_URI"]="https://dagshub.com/krishnaik06/networksecurity.mlflow"
-os.environ["MLFLOW_TRACKING_USERNAME"]="krishnaik06"
-os.environ["MLFLOW_TRACKING_PASSWORD"]="7104284f1bb44ece21e0e2adb4e36a250ae3251f"
-
-
-
-
+os.environ["MLFLOW_TRACKING_URI"]="https://dagshub.com/HarshavardhanKurtkoti/Phising_Domain_Detection.mlflow"
+os.environ["MLFLOW_TRACKING_USERNAME"]=os.getenv("DAGSHUB_USERNAME")
+os.environ["MLFLOW_TRACKING_PASSWORD"]=os.getenv("DAGSHUB_TOKEN")
 
 class ModelTrainer:
     def __init__(self,model_trainer_config:ModelTrainerConfig,data_transformation_artifact:DataTransformationArtifact):
@@ -60,15 +56,15 @@ class ModelTrainer:
             mlflow.log_metric("recall_score",recall_score)
             mlflow.sklearn.log_model(best_model,"model")
             # Model registry does not work with file store
-            if tracking_url_type_store != "file":
+            #if tracking_url_type_store != "file":
 
                 # Register the model
                 # There are other ways to use the Model Registry, which depends on the use case,
                 # please refer to the doc for more information:
                 # https://mlflow.org/docs/latest/model-registry.html#api-workflow
-                mlflow.sklearn.log_model(best_model, "model", registered_model_name=best_model)
-            else:
-                mlflow.sklearn.log_model(best_model, "model")
+                # mlflow.sklearn.log_model(best_model, "model", registered_model_name="phishing_detection_model")
+            #else:
+                #mlflow.sklearn.log_model(best_model, "model")
 
 
         

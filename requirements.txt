@@ -3,7 +3,10 @@ setuptools
 pandas
 numpy
 pymongo
-pymongo[srv] == 3.6
 scikit-learn
+mlflow
+dill
+pyaml
+dagshub
 
 #-e .
